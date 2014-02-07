@@ -3,6 +3,7 @@
 //#r @".\bin\Release\FSVindinium.dll"
 // or, if you want to experiment with the source
 #load "FSVindinium.fs"
+#load "Tools.fs"
 #load "Keys.fs"
 
 open System 
@@ -40,6 +41,7 @@ let startAI (game: VindiniumGame) =
             // Otherwise do a random move and give it another go
             let nextMove = getRandomMove()
             printfn "Move for round %i of %i: %s" (state.Game.Turn) (state.Game.MaxTurns) (nextMove.ToString())
+            Tools.makeMap state |> ignore
             let newState = game.Move (nextMove)
             aiLoop newState
     aiLoop game.StartingState

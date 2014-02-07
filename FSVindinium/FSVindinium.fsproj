@@ -50,9 +50,11 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="Keys.fs" />
+    <Compile Include="Maps.fs" />
     <Compile Include="FSVindinium.fs" />
-    <Compile Include="Utility.fs" />
+    <Compile Include="Tools.fs" />
     <None Include="Play.fsx" />
+    <None Include="MapParsingTest.fsx" />
     <None Include="Sample.json" />
     <None Include="packages.config" />
   </ItemGroup>

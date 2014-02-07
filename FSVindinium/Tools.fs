@@ -21,7 +21,9 @@ type MapComponent =
     | Tavern
     | Mine of Player option
 
-let makeMap (state: Parser.Entity) =
+type Map = MapComponent[,]
+
+let makeMap (state: Parser.Entity) : Map =
     let mapDim = state.Game.Board.Size
     
     // Need to know which hero is me
@@ -48,18 +50,3 @@ let makeMap (state: Parser.Entity) =
             let index = int hero.[1]
             if (index = playerNo) then Hero(Me) else Hero(Player.FromInt((playerNo + index)%4))
         | x -> failwithf "Didn't recognise map piece %s" x)
-
-
-let m2 = """
-########################
-########        ########
-####$-            $-####
-####  @2        @4  ####
-##    []  $-$-  []    ##
-##    ##  ####  ##    ##
-##    ##  ####  ##    ##
-##    []  $-$-  []    ##
-####  @1        @3  ####
-####$-            $-####
-########        ########
-########################""".Replace("\n","")
